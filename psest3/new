@@ -1,0 +1,45 @@
+      // TODO
+        //note = "3";
+        char letter = ' ';
+        char octave = ' ';
+        bool sharp = false;
+        double base_frequency = 0;
+        //double shift_frequency = 0;
+
+        float total_frequency = 0;
+
+        letter = note[0];
+        if (note[1]=='#')
+            sharp = true;
+
+    if(!sharp)
+    {
+        switch(letter)
+        {
+
+            octave = note[1] - '0';
+
+            case 'C' :
+                base_frequency = 16.35;
+                break;
+            case 'D' :
+                base_frequency = 18.35;
+                break;
+            case 'E' :
+                base_frequency = 20.60;
+            case 'F' :
+                base_frequency = 21.83;
+                break;
+            case 'G' :
+                base_frequency = 24.50  ;
+                break;
+            case 'A' :
+                base_frequency = 27.50  ;
+                break;
+            case 'B' :
+                base_frequency = 30.87;
+                break;
+        }
+    }
+    else
+    {
