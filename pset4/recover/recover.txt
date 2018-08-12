@@ -1,0 +1,44 @@
+Specification
+Implement a program called recover that recovers JPEGs from a forensic image.
+
+Implement your program in a file called recover.c in a directory called recover.
+
+Your program should accept exactly one command-line argument, the name of a forensic image from which to recover JPEGs. + If your program is not executed with exactly one command-line argument, it should remind the user of correct usage, as with fprintf (to stderr), and main should return 1.
+
+If the forensic image cannot be opened for reading, your program should inform the user as much, as with fprintf (to stderr), and main should return 2.
+
+Your program, if it uses malloc, must not leak any memory.
+
+Walkthrough
+
+Usage
+Your program should behave per the examples below. Assumed that the underlined text is what some user has typed.
+
+$ ./recover
+Usage: ./recover image
+$ echo $?
+1
+$ ./recover card.raw
+$ echo $?
+0
+Testing
+check50
+check50 cs50/2018/x/recover
+Staff’s Solution
+Afraid having the staff’s solution would spoil the challenge!
+
+Hints
+Odds are you’ll want to start by creating a file called recover.c (in the same directory as is card.raw). No need for the CS50 Library, but you will want to declare main in such a way that it supports command-line arguments. (Remember how?)
+
+Keep in mind that you can open card.raw programmatically with fopen, as with the below, provided argv[1] exists.
+
+FILE *file = fopen(argv[1], "r");
+When executed, your program should recover every one of the JPEGs from card.raw, storing each as a separate file in your current working directory. Your program should number the files it outputs by naming each ###.jpg, where ### is three-digit decimal number from 000 on up. (Befriend sprintf.) You need not try to recover the JPEGs' original names. To check whether the JPEGs your program spit out are correct, simply double-click and take a look! If each photo appears intact, your operation was likely a success!
+
+Odds are, though, the JPEGs that the first draft of your code spits out won’t be correct. (If you open them up and don’t see anything, they’re probably not correct!) Execute the command below to delete all JPEGs in your current working directory.
+
+rm *.jpg
+If you’d rather not be prompted to confirm each deletion, execute the command below instead.
+
+rm -f *.jpg
+Just be careful with that -f switch, as it "forces" deletion without prompting you.
